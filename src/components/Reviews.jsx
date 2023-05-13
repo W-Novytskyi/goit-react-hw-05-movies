@@ -23,16 +23,23 @@ export const Reviews = () => {
       });
   }, [movieId]);
 
+  if (!reviews) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
-      {reviews.results && <p>We don't have any reviews for this movie.</p>}
+      {!reviews.results.length && (
+        <p>We don't have any reviews for this movie.</p>
+      )}
       <ul>
-        {reviews.results.map(result => (
-          <li key={result.id}>
-            <h2>{result.author}</h2>
-            <p>{result.content}</p>
-          </li>
-        ))}
+        {reviews.results &&
+          reviews.results.map(result => (
+            <li key={result.id}>
+              <h2>{result.author}</h2>
+              <p>{result.content}</p>
+            </li>
+          ))}
       </ul>
     </div>
   );

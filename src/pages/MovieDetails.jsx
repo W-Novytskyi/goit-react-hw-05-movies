@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 
 const API_KEY = '9f9d8f1e33dd4ff41c4595e7766fec8d';
 
 const MovieDetails = () => {
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
@@ -31,6 +33,9 @@ const MovieDetails = () => {
     movie;
   return (
     <div>
+      <button type="button">
+        <Link to={backLinkLocationRef.current}>Go back</Link>
+      </button>
       <div>
         <img
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
