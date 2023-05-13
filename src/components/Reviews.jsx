@@ -5,7 +5,7 @@ const API_KEY = '9f9d8f1e33dd4ff41c4595e7766fec8d';
 
 export const Reviews = () => {
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState({});
 
   useEffect(() => {
     fetch(
@@ -28,7 +28,7 @@ export const Reviews = () => {
   }
 
   return (
-    <div>
+    <>
       {!reviews.results.length && (
         <p>We don't have any reviews for this movie.</p>
       )}
@@ -41,6 +41,6 @@ export const Reviews = () => {
             </li>
           ))}
       </ul>
-    </div>
+    </>
   );
 };

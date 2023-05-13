@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Container, ListWrapper } from './Home.styled';
 
 const API_KEY = '9f9d8f1e33dd4ff41c4595e7766fec8d';
 
@@ -21,17 +22,17 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <Container>
       <h1>Trending today</h1>
 
-      <ul>
+      <ListWrapper>
         {itemList.map(({ id, title }) => (
           <Link key={id} to={`/movies/${id}`} state={{ from: location }}>
             {title}
           </Link>
         ))}
-      </ul>
-    </div>
+      </ListWrapper>
+    </Container>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Card, Img } from './Cast.styled';
 
 const API_KEY = '9f9d8f1e33dd4ff41c4595e7766fec8d';
 
@@ -28,23 +29,23 @@ export const Cast = () => {
   }
 
   return (
-    <div>
+    <>
       <ul>
         {cast.map(({ id, profile_path, name, character }) => (
-          <li key={id} to={`/movies/${id}`}>
+          <Card key={id} to={`/movies/${id}`}>
             {profile_path ? (
-              <img
+              <Img
                 src={`https://image.tmdb.org/t/p/w500${profile_path}`}
                 alt=""
               />
             ) : (
               <p>No Image Available</p>
             )}
-            <p>{name}</p>
+            <h2>{name}</h2>
             <p>{character}</p>
-          </li>
+          </Card>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
