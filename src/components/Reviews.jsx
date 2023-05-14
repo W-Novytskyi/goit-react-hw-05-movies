@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 const API_KEY = '9f9d8f1e33dd4ff41c4595e7766fec8d';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState({});
 
@@ -23,13 +23,9 @@ export const Reviews = () => {
       });
   }, [movieId]);
 
-  if (!reviews) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <>
-      {!reviews.results.length && (
+      {reviews && reviews.results && reviews.results.length === 0 && (
         <p>We don't have any reviews for this movie.</p>
       )}
       <ul>
@@ -44,3 +40,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header, Link } from './Layout.styled';
 import PropTypes from 'prop-types';
@@ -11,7 +12,9 @@ export const Layout = () => {
         <Link to="/movies">Movies</Link>
       </Header>
       <main>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );

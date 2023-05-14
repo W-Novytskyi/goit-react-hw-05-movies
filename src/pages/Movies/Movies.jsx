@@ -59,7 +59,7 @@ const Movies = () => {
       </form>
       <ListWrapper>
         {movies.map(({ id, title }) => (
-          <Link key={id} to={`/movies/${id}`} state={{ from: location }}>
+          <Link key={id} to={`${id}`} state={{ from: location }}>
             {title}
           </Link>
         ))}

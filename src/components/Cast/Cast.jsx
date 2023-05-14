@@ -4,7 +4,7 @@ import { Card, Img } from './Cast.styled';
 
 const API_KEY = '9f9d8f1e33dd4ff41c4595e7766fec8d';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
 
@@ -23,10 +23,6 @@ export const Cast = () => {
         console.error(error);
       });
   }, [movieId]);
-
-  if (!cast) {
-    return <div>Loading the cast for a movie...</div>;
-  }
 
   return (
     <>
@@ -49,3 +45,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;
