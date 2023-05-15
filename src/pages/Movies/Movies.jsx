@@ -39,7 +39,6 @@ const Movies = () => {
         }
         console.log(data);
         setMovies(data.results);
-        setInputValue('');
       })
       .catch(error => {
         console.error(error);
