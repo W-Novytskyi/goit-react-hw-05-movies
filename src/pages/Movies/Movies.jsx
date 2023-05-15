@@ -35,7 +35,7 @@ const Movies = () => {
       })
       .then(data => {
         if (data.results.length === 0) {
-          return alert(`Sory we dont found ${query}`);
+          return alert(`Sorry, we dont found ${query}`);
         }
         console.log(data);
         setMovies(data.results);
